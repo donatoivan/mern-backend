@@ -16,10 +16,10 @@ const createNewAbout = async (req, res) => {
 const getAllAbouts = async (req, res) => {
   try {
     const abouts = await About.find();
-    return res.status(200).send(abouts);
+    return res.status(200).json(abouts);
   } catch (error) {
     console.log(error.message);
-    return res.status(400).send(`Could not get About ${error.message}`);
+    return res.status(400).json(`Could not get About ${error.message}`);
   }
 };
 
