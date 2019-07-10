@@ -27,7 +27,7 @@ const EventSchema = new mongoose.Schema({
   },
   venue: {
     type: [mongoose.Schema.Types.ObjectId],
-    ref: "venue",
+    ref: "Venue",
     required: true
   },
   past: {
