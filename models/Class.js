@@ -19,7 +19,7 @@ const ClassSchema = new mongoose.Schema({
   },
   instructor: {
     type: [mongoose.Schema.Types.ObjectId],
-    ref: "instructor",
+    ref: "Instructor",
     required: true
   },
   date: {
@@ -36,7 +36,7 @@ const ClassSchema = new mongoose.Schema({
   },
   venue: {
     type: [mongoose.Schema.Types.ObjectId],
-    ref: "venue",
+    ref: "Venue",
     required: true
   }
 });
