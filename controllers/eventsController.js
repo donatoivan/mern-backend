@@ -1,5 +1,6 @@
 const Event = require("../models/Event");
 
+// Add a new Event
 const addNewEvent = async (req, res) => {
   try {
     const {
@@ -23,29 +24,32 @@ const addNewEvent = async (req, res) => {
       venue,
       past
     });
-    res.status(201).send(`Successfully created new Event: ${newEvent}`);
+    return res.status(201).send(`Successfully created new Event: ${newEvent}`);
   } catch (error) {
     console.log(error.message);
-    res.status(400).send(`Could not create new Event ${error.message}`);
+    return res.status(400).send(`Could not create new Event ${error.message}`);
   }
 };
 
+//Get details of all Events
 const getAllEvent = async (req, res) => {
   try {
     const event = await Event.find();
-    res.status(200).send(event);
+    return res.status(200).send(event);
   } catch (error) {
-    res.status(400).send(`Could not get Event ${error.message}`);
+    return res.status(400).send(`Could not get Event ${error.message}`);
   }
 };
 
+// Get details of one Event
 const getOneEvent = async (req, res) => {
   const { id } = req.params;
   const event = await Event.findOne({ _id: id });
   console.log(event._id);
-  res.status(200).send(event);
+  return res.status(200).send(event);
 };
 
+// Update details of a single Event
 const updateEvent = async (req, res) => {
   const { id } = req.params;
   const { name, description, image, date, time, price, venue, past } = req.body;
@@ -72,17 +76,18 @@ const updateEvent = async (req, res) => {
         past: newPast
       }
     );
-    res
+    return res
       .status(200)
       .send(
         `Successfully updated ${newName}, ${newDescription}, ${newImage},${newVenue}`
       );
   } catch (error) {
     console.log(error);
-    res.status(400).send(`Could not update Event ${error.message}`);
+    return res.status(400).send(`Could not update Event ${error.message}`);
   }
 };
 
+//Delete an Event
 const deleteOneEvent = async (req, res) => {
   const { id } = req.params;
   try {
