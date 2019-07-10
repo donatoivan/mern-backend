@@ -11,4 +11,6 @@ router.post("/new", createNewAbout);
 router.get("/", getAllAbouts);
 router.put("/:id", updateAbout);
 
+
+
 module.exports = router;

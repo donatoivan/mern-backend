@@ -6,11 +6,16 @@ const cors = require("cors");
 
 app.use(express.json());
 
+
 const aboutRoutes = require("./routes/aboutRoutes");
 const venueRoutes = require("./routes/venueRoutes");
 const instructorRoutes = require("./routes/instructorRoutes");
 const classRoutes = require("./routes/classRoutes");
 const eventRoutes = require("./routes/eventRoutes");
+
+const userRoutes = require('./routes/userRoutes');
+const authRoutes = require('./routes/authRoutes');
+
 
 const mongoPROD_URI =
   "mongodb+srv://admin:123456pop@ballarat-5i5ts.mongodb.net/test?retryWrites=true&w=majority";
@@ -24,11 +29,15 @@ app.get("/", (req, res) => {
   res.send("Api running");
 });
 
+
 app.use("/about", aboutRoutes);
 app.use("/venue", venueRoutes);
 app.use("/instructor", instructorRoutes);
 app.use("/class", classRoutes);
 app.use("/event", eventRoutes);
+app.use('/users', userRoutes);
+app.use('/auth', authRoutes);
+
 
 app.listen(PORT, () => {
   console.log(`listening on Port ${PORT}`);
