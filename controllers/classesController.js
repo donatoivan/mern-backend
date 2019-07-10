@@ -101,8 +101,10 @@ const deleteOneClass = async (req, res) => {
   console.log("deleteOneClass");
   const { id } = req.params;
   try {
-    let oneClass = await Class.findOneAndRemove({ _id: id },,
-      { useFindAndModify: false });
+    let oneClass = await Class.findOneAndRemove(
+      { _id: id },
+      { useFindAndModify: false }
+    );
     console.log(oneClass);
     if (!oneClass) {
       return res.status(404).send(`Cannot find Class`);
