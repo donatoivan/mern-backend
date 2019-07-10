@@ -1,5 +1,6 @@
 const Class = require("../models/Class");
 
+// Add a new Class
 const addNewClass = async (req, res) => {
   console.log("createNewClass");
   try {
@@ -25,30 +26,33 @@ const addNewClass = async (req, res) => {
       image,
       venue
     });
-    res.status(201).send(`Successfully create new Class ${newClass}`);
+    return res.status(201).send(`Successfully create new Class ${newClass}`);
   } catch (error) {
-    res.status(400).send(`Could not create new Class ${error.message}`);
+    return res.status(400).send(`Could not create new Class ${error.message}`);
   }
 };
 
+// Get details of all Classes
 const getAllClasses = async (req, res) => {
   console.log("getAllClasses");
   try {
     const classes = await Class.find();
-    res.status(200).send(classes);
+    return res.status(200).send(classes);
   } catch (error) {
-    res.status(400).send(`Could not get Class ${error.message}`);
+    return res.status(400).send(`Could not get Class ${error.message}`);
   }
 };
 
+// Get details of one Class
 const getOneClass = async (req, res) => {
   console.log("getOneClass");
   const { id } = req.params;
   const oneClass = await Class.findOne({ _id: id });
   console.log(oneClass._id);
-  res.status(200).send(oneClass);
+  return res.status(200).send(oneClass);
 };
 
+// Update details of a single Class
 const updateClass = async (req, res) => {
   console.log("updateClass");
   const { id } = req.params;
@@ -87,16 +91,17 @@ const updateClass = async (req, res) => {
         venue: newVenue
       }
     );
-    res
+    return res
       .status(200)
       .send(
         `Successfully updated ${newName}, ${newDescription}, ${newImage},${newVenue}`
       );
   } catch (error) {
-    res.status(400).send(`Could not update Class ${error.message}`);
+    return res.status(400).send(`Could not update Class ${error.message}`);
   }
 };
 
+// Delete a Class
 const deleteOneClass = async (req, res) => {
   console.log("deleteOneClass");
   const { id } = req.params;
