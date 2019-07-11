@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const app = new express();
 const PORT = process.env.PORT || 5000;
 const cors = require("cors");
+app.use(cors())
+const About = require("./models/About")
 
 app.use(express.json());
 
@@ -18,7 +20,7 @@ const authRoutes = require('./routes/authRoutes');
 
 
 const mongoPROD_URI =
-  "mongodb+srv://admin:123456pop@ballarat-5i5ts.mongodb.net/test?retryWrites=true&w=majority";
+  "mongodb+srv://admin:admin@ballarat-5i5ts.mongodb.net/test?retryWrites=true&w=majority";
 
 mongoose.connect(mongoPROD_URI, { useNewUrlParser: true }, err => {
   if (err) return console.log(`${err}`);
@@ -28,6 +30,14 @@ mongoose.connect(mongoPROD_URI, { useNewUrlParser: true }, err => {
 app.get("/", (req, res) => {
   res.send("Api running");
 });
+
+app.post("/seed", async (req, res) => {
+  const { description } = req.body
+  const aboutDescription = new About({ description: description });
+  console.log(description)
+  const newAboutDescription = await aboutDescription.save()
+  res.json('successfully added description' + newAboutDescription)
+})
 
 
 app.use("/about", aboutRoutes);
