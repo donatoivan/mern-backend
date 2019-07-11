@@ -42,26 +42,10 @@ const getOneInstructor = async (req, res) => {
 // Update details of one Instructor
 const updateInstructor = async (req, res) => {
   const { id } = req.params;
-  const { name, description, image, expertise } = req.body;
-  const newName = name;
-  const newDescription = description;
-  const newImage = image;
-  const newExpertise = expertise;
+  const payload = req.body;
   try {
-    await Instructor.updateOne(
-      { _id: id },
-      {
-        name: newName,
-        description: newDescription,
-        image: newImage,
-        expertise: newExpertise
-      }
-    );
-    return res
-      .status(200)
-      .send(
-        `Successfully updated ${newName}, ${newDescription}, ${newImage},${newExpertise}`
-      );
+    await Instructor.updateOne({ _id: id }, payload);
+    return res.status(200).send(`Successfully updated Instructor ${id}`);
   } catch (error) {
     console.log(error.message);
 

@@ -26,14 +26,10 @@ const getAllAbouts = async (req, res) => {
 // Update About details
 const updateAbout = async (req, res) => {
   const { id } = req.params;
-  const { description } = req.body;
-  const newDescription = description;
+  const payload = req.body;
   try {
-    let about = await About.updateOne(
-      { _id: id },
-      { description: newDescription }
-    );
-    return res.status(200).send(`Successfully updated ${newDescription}`);
+    let about = await About.updateOne({ _id: id }, payload);
+    return res.status(200).send(`Successfully updated About`);
   } catch (error) {
     return res.status(400).send(`Could not update About ${error.message}`);
   }
