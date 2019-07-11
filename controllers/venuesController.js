@@ -32,26 +32,11 @@ const getOneVenue = async (req, res) => {
 // Update details of a Venue
 const updateVenue = async (req, res) => {
   const { id } = req.params;
-  const { name, description, image, address } = req.body;
-  const newName = name;
-  const newDescription = description;
-  const newImage = image;
-  const newAddress = address;
+  const payload = req.body;
+
   try {
-    await Venue.updateOne(
-      { _id: id },
-      {
-        name: newName,
-        description: newDescription,
-        image: newImage,
-        address: newAddress
-      }
-    );
-    return res
-      .status(200)
-      .send(
-        `Successfully updated ${newName}, ${newDescription}, ${newImage},${newAddress}`
-      );
+    await Venue.updateOne({ _id: id }, payload);
+    return res.status(200).send(`Successfully updated Venue ${id}`);
   } catch (error) {
     console.log(error);
     return res.status(400).send(`Could not update Venue ${error.message}`);

@@ -56,46 +56,11 @@ const getOneClass = async (req, res) => {
 const updateClass = async (req, res) => {
   console.log("updateClass");
   const { id } = req.params;
-  const {
-    name,
-    description,
-    category,
-    price,
-    instructor,
-    date,
-    time,
-    image,
-    venue
-  } = req.body;
-  const newName = name;
-  const newDescription = description;
-  const newCategory = category;
-  const newPrice = price;
-  const newInstructor = instructor;
-  const newDate = date;
-  const newTime = time;
-  const newImage = image;
-  const newVenue = venue;
+  const payload = req.body;
+
   try {
-    await Class.updateOne(
-      { _id: id },
-      {
-        name: newName,
-        description: newDescription,
-        category: newCategory,
-        price: newPrice,
-        instructor: newInstructor,
-        date: newDate,
-        time: newTime,
-        image: newImage,
-        venue: newVenue
-      }
-    );
-    return res
-      .status(200)
-      .send(
-        `Successfully updated ${newName}, ${newDescription}, ${newImage},${newVenue}`
-      );
+    await Class.updateOne({ _id: id }, payload);
+    return res.status(200).send(`Successfully updated Class ${id}`);
   } catch (error) {
     return res.status(400).send(`Could not update Class ${error.message}`);
   }

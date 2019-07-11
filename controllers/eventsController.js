@@ -52,35 +52,11 @@ const getOneEvent = async (req, res) => {
 // Update details of a single Event
 const updateEvent = async (req, res) => {
   const { id } = req.params;
-  const { name, description, image, date, time, price, venue, past } = req.body;
-  const newName = name;
-  const newDescription = description;
-  const newImage = image;
-  const newDate = date;
-  const newTime = time;
-  const newPrice = price;
-  const newVenue = venue;
-  const newPast = past;
+  const payload = req.body;
 
   try {
-    await Event.updateOne(
-      { _id: id },
-      {
-        name: newName,
-        description: newDescription,
-        image: newImage,
-        date: newDate,
-        time: newTime,
-        price: newPrice,
-        venue: newVenue,
-        past: newPast
-      }
-    );
-    return res
-      .status(200)
-      .send(
-        `Successfully updated ${newName}, ${newDescription}, ${newImage},${newVenue}`
-      );
+    await Event.updateOne({ _id: id }, payload);
+    return res.status(200).send(`Successfully updated Event ${id}`);
   } catch (error) {
     console.log(error);
     return res.status(400).send(`Could not update Event ${error.message}`);
