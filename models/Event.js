@@ -12,27 +12,6 @@ const EventSchema = new mongoose.Schema({
   image: {
     type: String,
     required: true
-  },
-  date: {
-    type: [Date],
-    required: true
-  },
-  time: {
-    type: String,
-    required: true
-  },
-  price: {
-    type: String,
-    required: true
-  },
-  venue: {
-    type: [mongoose.Schema.Types.ObjectId],
-    ref: "Venue",
-    required: true
-  },
-  past: {
-    type: Boolean,
-    required: true
   }
 });
 

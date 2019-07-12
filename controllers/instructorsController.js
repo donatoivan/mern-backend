@@ -3,12 +3,11 @@ const Instructor = require("../models/Instructor");
 // Add a new Instructor
 const addNewInstructor = async (req, res) => {
   try {
-    const { name, description, image, expertise } = req.body;
+    const { name, description, faculty } = req.body;
     const newInstructor = await Instructor.create({
       name,
       description,
-      image,
-      expertise
+      faculty
     });
     return res
       .status(201)

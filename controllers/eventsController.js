@@ -3,26 +3,12 @@ const Event = require("../models/Event");
 // Add a new Event
 const addNewEvent = async (req, res) => {
   try {
-    const {
-      name,
-      description,
-      image,
-      date,
-      time,
-      price,
-      venue,
-      past
-    } = req.body;
+    const { name, description, image } = req.body;
 
     const newEvent = await Event.create({
       name,
       description,
-      image,
-      date,
-      time,
-      price,
-      venue,
-      past
+      image
     });
     return res.status(201).send(`Successfully created new Event: ${newEvent}`);
   } catch (error) {
@@ -72,7 +58,7 @@ const deleteOneEvent = async (req, res) => {
       { useFindAndModify: false }
     );
     if (!event) {
-      return res.status(404).send(`Cannot find Event ${eenue.id}`);
+      return res.status(404).send(`Cannot find Event ${event.id}`);
     } else {
       return res.status(200).send(`Event is successfully deleted`);
     }
