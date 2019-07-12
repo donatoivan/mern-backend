@@ -13,30 +13,8 @@ const ClassSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  price: {
-    type: String,
-    required: true
-  },
-  instructor: {
-    type: [mongoose.Schema.Types.ObjectId],
-    ref: "Instructor",
-    required: true
-  },
-  date: {
-    type: [Date],
-    required: true
-  },
-  time: {
-    type: String,
-    required: true
-  },
   image: {
     type: String,
-    required: true
-  },
-  venue: {
-    type: [mongoose.Schema.Types.ObjectId],
-    ref: "Venue",
     required: true
   }
 });

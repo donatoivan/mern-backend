@@ -4,27 +4,12 @@ const Class = require("../models/Class");
 const addNewClass = async (req, res) => {
   console.log("createNewClass");
   try {
-    const {
-      name,
-      description,
-      category,
-      price,
-      instructor,
-      date,
-      time,
-      image,
-      venue
-    } = req.body;
+    const { name, description, category, image } = req.body;
     const newClass = await Class.create({
       name,
       description,
       category,
-      price,
-      instructor,
-      date,
-      time,
-      image,
-      venue
+      image
     });
     return res.status(201).send(`Successfully create new Class ${newClass}`);
   } catch (error) {
