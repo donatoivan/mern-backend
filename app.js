@@ -5,7 +5,7 @@ const cors = require("cors");
 app.use(cors());
 
 const aboutRoutes = require("./routes/aboutRoutes");
-const venueRoutes = require("./routes/venueRoutes");
+// const venueRoutes = require("./routes/venueRoutes");
 const instructorRoutes = require("./routes/instructorRoutes");
 const classRoutes = require("./routes/classRoutes");
 const tuitionRoutes = require("./routes/tuitionRoutes");
@@ -15,7 +15,7 @@ const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
 
 app.use("/about", aboutRoutes);
-app.use("/venue", venueRoutes);
+// app.use("/venue", venueRoutes);
 app.use("/instructor", instructorRoutes);
 app.use("/class", classRoutes);
 app.use("/tuition", tuitionRoutes);
