@@ -1,11 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const app = new express();
+const app = require("./app");
 const PORT = process.env.PORT || 5000;
-const cors = require("cors");
-app.use(cors());
 const About = require("./models/About");
 
+<<<<<<< HEAD
 app.use(express.json());
 
 const aboutRoutes = require("./routes/aboutRoutes");
@@ -20,6 +19,8 @@ const authRoutes = require("./routes/authRoutes");
 const imageRoutes = require("./routes/imageRoutes");
 
 
+=======
+>>>>>>> c261e21eade6651904b641bdb9d914a50cfc0c5c
 const mongoPROD_URI =
   "mongodb+srv://admin:admin@ballarat-5i5ts.mongodb.net/test?retryWrites=true&w=majority";
 
@@ -28,6 +29,7 @@ mongoose.connect(mongoPROD_URI, { useNewUrlParser: true }, err => {
   console.log("connected to mongodb");
 });
 
+<<<<<<< HEAD
 app.get("/", (req, res) => {
   res.send("Api running");
 });
@@ -51,6 +53,8 @@ app.use("/users", userRoutes);
 app.use("/auth", authRoutes);
 app.use("/images", imageRoutes);
 
+=======
+>>>>>>> c261e21eade6651904b641bdb9d914a50cfc0c5c
 app.listen(PORT, () => {
   console.log(`listening on Port ${PORT}`);
 });

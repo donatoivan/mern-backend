@@ -10,10 +10,10 @@ const addNewEvent = async (req, res) => {
       description,
       image
     });
-    return res.status(201).send(`Successfully created new Event: ${newEvent}`);
+    return res.status(201).json(`Successfully created new Event: ${newEvent}`);
   } catch (error) {
     console.log(error.message);
-    return res.status(400).send(`Could not create new Event ${error.message}`);
+    return res.status(400).json(`Could not create new Event ${error.message}`);
   }
 };
 
@@ -21,9 +21,9 @@ const addNewEvent = async (req, res) => {
 const getAllEvent = async (req, res) => {
   try {
     const event = await Event.find();
-    return res.status(200).send(event);
+    return res.status(200).json(event);
   } catch (error) {
-    return res.status(400).send(`Could not get Event ${error.message}`);
+    return res.status(400).json(`Could not get Event ${error.message}`);
   }
 };
 
@@ -31,8 +31,7 @@ const getAllEvent = async (req, res) => {
 const getOneEvent = async (req, res) => {
   const { id } = req.params;
   const event = await Event.findOne({ _id: id });
-  console.log(event._id);
-  return res.status(200).send(event);
+  return res.status(200).json(event);
 };
 
 // Update details of a single Event
@@ -42,10 +41,10 @@ const updateEvent = async (req, res) => {
 
   try {
     await Event.updateOne({ _id: id }, payload);
-    return res.status(200).send(`Successfully updated Event ${id}`);
+    return res.status(200).json(`Successfully updated Event ${id}`);
   } catch (error) {
     console.log(error);
-    return res.status(400).send(`Could not update Event ${error.message}`);
+    return res.status(400).json(`Could not update Event ${error.message}`);
   }
 };
 
@@ -58,13 +57,13 @@ const deleteOneEvent = async (req, res) => {
       { useFindAndModify: false }
     );
     if (!event) {
-      return res.status(404).send(`Cannot find Event ${event.id}`);
+      return res.status(404).json(`Cannot find Event ${event.id}`);
     } else {
-      return res.status(200).send(`Event is successfully deleted`);
+      return res.status(200).json(`Event is successfully deleted`);
     }
   } catch (error) {
     console.log(error);
-    return res.status(400).send(`There has been an error: ${error}`);
+    return res.status(400).json(`There has been an error: ${error}`);
   }
 };
 

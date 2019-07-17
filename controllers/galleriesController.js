@@ -9,11 +9,11 @@ const addNewGallery = async (req, res) => {
     });
     return res
       .status(201)
-      .send(`Successfully create new Gallery ${newGallery}`);
+      .json(`Successfully create new Gallery ${newGallery}`);
   } catch (error) {
     return res
       .status(400)
-      .send(`Could not create new Gallery ${error.message}`);
+      .json(`Could not create new Gallery ${error.message}`);
   }
 };
 
@@ -21,9 +21,9 @@ const addNewGallery = async (req, res) => {
 const getAllGalleries = async (req, res) => {
   try {
     const galleries = await Gallery.find();
-    return res.status(200).send(galleries);
+    return res.status(200).json(galleries);
   } catch (error) {
-    return res.status(400).send(`Could not get Galleries ${error.message}`);
+    return res.status(400).json(`Could not get Galleries ${error.message}`);
   }
 };
 
@@ -31,8 +31,7 @@ const getAllGalleries = async (req, res) => {
 const getOneGallery = async (req, res) => {
   const { id } = req.params;
   const gallery = await Gallery.findOne({ _id: id });
-  console.log(gallery._id);
-  return res.status(200).send(gallery);
+  return res.status(200).json(gallery);
 };
 
 // Update details of a Gallery
@@ -42,10 +41,10 @@ const updateGallery = async (req, res) => {
 
   try {
     await Gallery.updateOne({ _id: id }, payload);
-    return res.status(200).send(`Successfully updated Gallery ${id}`);
+    return res.status(200).json(`Successfully updated Gallery ${id}`);
   } catch (error) {
     console.log(error);
-    return res.status(400).send(`Could not update Gallery ${error.message}`);
+    return res.status(400).json(`Could not update Gallery ${error.message}`);
   }
 };
 
@@ -58,13 +57,13 @@ const deleteOneGallery = async (req, res) => {
       { useFindAndModify: false }
     );
     if (!gallery) {
-      return res.status(404).send(`Cannot find Gallery ${gallery.id}`);
+      return res.status(404).json(`Cannot find Gallery ${gallery.id}`);
     } else {
-      return res.status(200).send(`Gallery is successfully deleted`);
+      return res.status(200).json(`Gallery is successfully deleted`);
     }
   } catch (error) {
     console.log(error);
-    return res.status(400).send(`There has been an error: ${error}`);
+    return res.status(400).json(`There has been an error: ${error}`);
   }
 };
 
