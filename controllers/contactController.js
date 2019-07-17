@@ -4,11 +4,16 @@ const Contact = require('../models/Contact');
 
 // Check if input is a valid email
 exports.emailCheck = [
-  check('email', 'Please include a val;id email').isEmail()
+  check('email', 'Please include a valid email').isEmail()
 ]
 
 // Create a Contact
 exports.createNewContact = async (req, res) => {
+  const errors = validationResult(req);
+  if(!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() })
+  }
+
   try {
     const { email } = req.body;
     const newContact = await Contact.create({ email });

@@ -42,7 +42,7 @@ const updateFaq = async (req, res) => {
   const payload = req.body;
   try {
     let faq = await Faq.updateOne({ _id: id}, payload);
-    return res.status(200).json(`Successfully updated Faq`);
+    return res.status(200).json(`Successfully updated Faq ${faq}`);
   } catch (error) {
     return res.status(400).json(`Could not update Faq ${error.message}`);
   }
