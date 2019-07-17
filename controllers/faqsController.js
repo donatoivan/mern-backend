@@ -67,7 +67,7 @@ const deleteOneFaq = async (req, res) => {
   }
 }
 
-module.export = {
+module.exports = {
   createNewFaq,
   getAllFaqs,
   getOneFaq,

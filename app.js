@@ -13,6 +13,8 @@ const eventRoutes = require("./routes/eventRoutes");
 const galleryRoutes = require("./routes/galleryRoutes");
 const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
+const contactRoutes = require('./routes/contactRoutes');
+const faqRoutes = require('./routes/faqRoutes');
 
 app.use("/about", aboutRoutes);
 // app.use("/venue", venueRoutes);
@@ -23,6 +25,8 @@ app.use("/event", eventRoutes);
 app.use("/gallery", galleryRoutes);
 app.use("/users", userRoutes);
 app.use("/auth", authRoutes);
+app.use("/contact", contactRoutes);
+app.use('/faq', faqRoutes);
 
 app.get("/", (req, res) => {
   res.send("Api running");
