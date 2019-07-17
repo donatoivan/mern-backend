@@ -12,23 +12,28 @@ const createNewAbout = async (req, res) => {
   }
 };
 
-// Get About details
+// Get all About details
 const getAllAbouts = async (req, res) => {
   try {
     const abouts = await About.find();
     return res.status(200).json(abouts);
   } catch (error) {
     console.log(error.message);
-    return res.status(400).json(`Could not get About ${error.message}`);
+    return res.status(400).json(`Could not get Abouts ${error.message}`);
   }
 };
 
 // Get details of one About
 const getOneAbout = async (req, res) => {
-  const { id } = req.params;
+  try {
+    const { id } = req.params;
   const oneAbout = await About.findOne({ _id: id });
   console.log(oneAbout._id);
   return res.status(200).json(oneAbout);
+  } catch (error) {
+    console.log(error.message)
+    return res.status(404).json(`Could no find about ${error.message}`)
+  }
 };
 
 // Update About details
@@ -52,13 +57,13 @@ const deleteOneAbout = async (req, res) => {
       { useFindAndModify: false }
     );
     if (!oneAbout) {
-      return res.status(404).json(`Cannot find About`);
+      return res.status(404).json('Cannot find About');
     } else {
-      return res.status(200).json(`About is successfully deleted`);
+      return res.status(200).json('About is successfully deleted');
     }
-  } catch (err) {
-    console.log(err.message);
-    return res.status(400).json(`There has been an error: ${err.message}`);
+  } catch (error) {
+    console.log(error.message);
+    return res.status(400).json(`There has been an error: ${error.message}`);
   }
 };
 
