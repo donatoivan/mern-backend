@@ -15,8 +15,10 @@ const createNewCarouselImage = async (req, res) => {
 
 // Get All Carousel Images
 const getAllCarouselImages = async (req, res) => {
+  console.log('here')
   try {
     const images = await CarouselImage.find();
+    console.log(images)
     return res.status(200).json(images)
   } catch (error) {
     console.log(error.message)
