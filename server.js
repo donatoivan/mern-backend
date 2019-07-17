@@ -17,6 +17,8 @@ const eventRoutes = require("./routes/eventRoutes");
 const galleryRoutes = require("./routes/galleryRoutes");
 const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
+const imageRoutes = require("./routes/imageRoutes");
+
 
 const mongoPROD_URI =
   "mongodb+srv://admin:admin@ballarat-5i5ts.mongodb.net/test?retryWrites=true&w=majority";
@@ -47,6 +49,7 @@ app.use("/event", eventRoutes);
 app.use("/gallery", galleryRoutes);
 app.use("/users", userRoutes);
 app.use("/auth", authRoutes);
+app.use("/images", imageRoutes);
 
 app.listen(PORT, () => {
   console.log(`listening on Port ${PORT}`);
