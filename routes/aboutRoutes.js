@@ -7,12 +7,12 @@ const {
   getOneAbout,
   updateAbout,
   deleteOneAbout
-} = require("../controllers/aboutsController");
+} = require('../controllers/aboutsController');
 
-router.post("/new", createNewAbout);
-router.get("/", getAllAbouts);
-router.put("/:id", updateAbout);
-router.get("/:id", getOneAbout);
-router.delete("/:id", deleteOneAbout);
+router.post('/new', createNewAbout);
+router.get('/', getAllAbouts);
+router.put('/:id', updateAbout);
+router.get('/:id', getOneAbout);
+router.delete('/:id', deleteOneAbout);
 
 module.exports = router;
