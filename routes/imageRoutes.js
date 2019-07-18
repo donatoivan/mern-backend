@@ -31,7 +31,7 @@ router.get('/get-objects', (req, res) => {
     } else {
       console.log(data.Contents)
       const urls = getUrls(data.Contents)
-      // console.log(urls)
+      console.log(urls)
       res.send({
         imageUrls: urls
       })
