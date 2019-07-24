@@ -2,7 +2,13 @@ const { check, validationResult } = require("express-validator");
 const Contact = require("../models/Contact");
 
 // Check if input is a valid email
-exports.emailCheck = [check("email", "Please include a valid email").isEmail()];
+exports.contactCheck = [
+  check("email", "Please include a valid email").isEmail(),
+
+  check("description", "Description cannot be empty")
+    .not()
+    .isEmpty()
+];
 
 // Create a Contact
 exports.createNewContact = async (req, res) => {

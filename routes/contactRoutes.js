@@ -1,16 +1,16 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
 const {
-  emailCheck,
+  contactCheck,
   createNewContact,
   getAllContacts
-} = require('../controllers/contactController');
+} = require("../controllers/contactController");
 
 // Create new contact
-router.post('/new', emailCheck, createNewContact);
+router.post("/new", contactCheck, createNewContact);
 
 // Get all contacts
-router.get('/', getAllContacts);
+router.get("/", getAllContacts);
 
 module.exports = router;
