@@ -5,7 +5,6 @@ const cors = require("cors");
 app.use(cors());
 
 const aboutRoutes = require("./routes/aboutRoutes");
-// const venueRoutes = require("./routes/venueRoutes");
 const instructorRoutes = require("./routes/instructorRoutes");
 const classRoutes = require("./routes/classRoutes");
 const tuitionRoutes = require("./routes/tuitionRoutes");
@@ -16,9 +15,9 @@ const authRoutes = require("./routes/authRoutes");
 const contactRoutes = require('./routes/contactRoutes');
 const faqRoutes = require('./routes/faqRoutes');
 const carouselImages = require('./routes/carouselImagesRoutes');
+const imageRoutes = require('./routes/imageRoutes');
 
 app.use("/about", aboutRoutes);
-// app.use("/venue", venueRoutes);
 app.use("/instructor", instructorRoutes);
 app.use("/class", classRoutes);
 app.use("/tuition", tuitionRoutes);
@@ -29,6 +28,7 @@ app.use("/auth", authRoutes);
 app.use("/contact", contactRoutes);
 app.use('/faq', faqRoutes);
 app.use('/carousel-images', carouselImages);
+app.use("/image", imageRoutes);
 
 app.get("/", (req, res) => {
   res.send("Api running");
@@ -37,7 +37,6 @@ app.get("/", (req, res) => {
 app.post("/seed", async (req, res) => {
   const { description } = req.body;
   const aboutDescription = new About({ description: description });
-  console.log(description);
   const newAboutDescription = await aboutDescription.save();
   res.json("successfully added description" + newAboutDescription);
 });
