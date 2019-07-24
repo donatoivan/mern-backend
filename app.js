@@ -13,9 +13,9 @@ const eventRoutes = require("./routes/eventRoutes");
 const galleryRoutes = require("./routes/galleryRoutes");
 const userRoutes = require("./routes/userRoutes");
 const authRoutes = require("./routes/authRoutes");
-const contactRoutes = require('./routes/contactRoutes');
-const faqRoutes = require('./routes/faqRoutes');
-const carouselImages = require('./routes/carouselImagesRoutes');
+const contactRoutes = require("./routes/contactRoutes");
+const faqRoutes = require("./routes/faqRoutes");
+const carouselImages = require("./routes/carouselImagesRoutes");
 
 app.use("/about", aboutRoutes);
 // app.use("/venue", venueRoutes);
@@ -27,8 +27,8 @@ app.use("/gallery", galleryRoutes);
 app.use("/users", userRoutes);
 app.use("/auth", authRoutes);
 app.use("/contact", contactRoutes);
-app.use('/faq', faqRoutes);
-app.use('/carousel-images', carouselImages);
+app.use("/faq", faqRoutes);
+app.use("/carousel-images", carouselImages);
 
 app.get("/", (req, res) => {
   res.send("Api running");
@@ -47,7 +47,7 @@ app.use((req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-  res.status(500).json({ error: error.message });
+  res.status(500).json({ error: err.message });
 });
 
 module.exports = app;
