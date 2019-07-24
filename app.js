@@ -1,5 +1,6 @@
 const express = require("express");
 const app = new express();
+const nodeMailer = require("nodemailer");
 app.use(express.json());
 const cors = require("cors");
 app.use(cors());
@@ -40,6 +41,38 @@ app.post("/seed", async (req, res) => {
   console.log(description);
   const newAboutDescription = await aboutDescription.save();
   res.json("successfully added description" + newAboutDescription);
+});
+
+app.post("/send-email", function(req, res) {
+  let transporter = nodeMailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
+    auth: {
+      // sender's account
+      user: "pooface2019@gmail.com",
+      pass: "Coderacademy2019"
+    }
+  });
+  console.log(req);
+  console.log(`subject ${req.body.email}`);
+  console.log(`message ${JSON.stringify(req.body.description)} `);
+
+  let mailOptions = {
+    // recipient's account
+    to: "sinyin81@gmail.com",
+    subject: req.body.email,
+    text: req.body.description
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      return console.log(error);
+    }
+    console.log("Message %s sent: %s", info.messageId, info.response);
+  });
+  res.writeHead(301, { Location: "index.html" });
+  res.end();
 });
 
 app.use((req, res, next) => {
