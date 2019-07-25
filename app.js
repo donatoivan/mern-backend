@@ -52,7 +52,7 @@ app.post("/send-email", function(req, res) {
     secure: true,
     auth: {
       // sender's account
-      user: "pooface2019@gmail.com",
+      user: "bcmacoderacademy@gmail.com",
       pass: "Coderacademy2019"
     }
   });
@@ -62,7 +62,7 @@ app.post("/send-email", function(req, res) {
 
   let mailOptions = {
     // recipient's account
-    to: "sinyin81@gmail.com",
+    to: "info@bcma.com.au",
     subject: req.body.email,
     html:
       `<h1 >Message from BCMA</h1>` +
