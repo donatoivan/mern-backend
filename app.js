@@ -52,7 +52,7 @@ app.post("/send-email", function(req, res) {
     secure: true,
     auth: {
       // sender's account
-      user: "bcmacoderacademy@gmail.com",
+      user: "pooface2019@gmail.com",
       pass: "Coderacademy2019"
     }
   });
