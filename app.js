@@ -62,7 +62,11 @@ app.post("/send-email", function(req, res) {
     // recipient's account
     to: "sinyin81@gmail.com",
     subject: req.body.email,
-    text: req.body.description
+    html:
+      `<h1 >Message from BCMA</h1>` +
+      `<h2>${req.body.description}</h2>` +
+      `<h1>Email Contact:</h1>` +
+      `<h2>${req.body.email}</h2>`
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
