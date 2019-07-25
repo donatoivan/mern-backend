@@ -17,6 +17,7 @@ const authRoutes = require("./routes/authRoutes");
 const contactRoutes = require("./routes/contactRoutes");
 const faqRoutes = require("./routes/faqRoutes");
 const carouselImages = require("./routes/carouselImagesRoutes");
+const imageRoutes = require("./routes/imageRoutes");
 
 app.use("/about", aboutRoutes);
 // app.use("/venue", venueRoutes);
@@ -30,6 +31,7 @@ app.use("/auth", authRoutes);
 app.use("/contact", contactRoutes);
 app.use("/faq", faqRoutes);
 app.use("/carousel-images", carouselImages);
+app.use("/images", imageRoutes);
 
 app.get("/", (req, res) => {
   res.send("Api running");
