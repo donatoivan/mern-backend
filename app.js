@@ -77,7 +77,7 @@ app.post("/send-email", function(req, res) {
     }
     console.log("Message %s sent: %s", info.messageId, info.response);
   });
-  res.writeHead(301, { Location: "index.html" });
+//   res.writeHead(301, { Location: "index.html" });
   res.end();
 });
 
